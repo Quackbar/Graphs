@@ -1,0 +1,7 @@
+A,B,C,D,E,F
+I,1,I,I,I,I
+I,5,I,1,11,I
+I,I,I,I,I,I
+5,I,I,I,3,I
+I,I,I,11,I,7
+I,I,3,I,I,I
