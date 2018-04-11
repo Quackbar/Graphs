@@ -168,9 +168,6 @@ public class Prims {
 //        Prim(thing);
        
     }
-    public static void main(String[] args){
-        Prims p = new Prims();        
-    }
 }
 
 

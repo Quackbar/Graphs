@@ -1,4 +1,9 @@
-package fw;
+/*
+ * Authors: Matt Wintersteen, Sam Luther
+ * Date: Tues, Apr 10
+ * Overview: It graph
+ */
+package graphs;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -9,6 +14,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/**
+ *
+ * @author mwintersteen
+ */
 public class FloydWarshall
 {
     final static int INF = 99999;
@@ -67,64 +76,6 @@ public class FloydWarshall
             }
             System.out.print("\n");
         }
-    }
-    
-    public static void main(String[] args){
-        /*
-              1
-        (A)--------(D)
-         | \    3 / |
-     10  |   \ /    |
-         |   / \ 5  | 2
-         | /     \  |
-        (B)--------(C)
-           4           */
-    	
-	    	String iFile = "textFiles/inputFW.txt";
-	    	String s;
-		String[] array = null;
-		Path inputPath = Paths.get(iFile);
-		int row=0;
-		boolean first = true;
-		
-		int[][] adjMatrix = null;
-			
-	    	try {
-				InputStream iStream = new BufferedInputStream(Files.newInputStream(inputPath));
-				BufferedReader reader = new BufferedReader(new InputStreamReader(iStream));
-				s = reader.readLine();
-				while(s != null) {
-					array = s.split(",");
-					if(first) {
-						adjMatrix = new int[array.length][array.length];
-						vertexAlias = new String[array.length];
-						for(int i=0;i<array.length;i++) {
-							vertexAlias[i] = array[i].toString();
-						}
-						first = false;
-					}
-					else{
-						for(int i=0;i<array.length;i++) {
-							if(array[i].equals("I")) {
-								adjMatrix[row][i] = INF;
-							}
-							else {
-								adjMatrix[row][i] = Integer.parseInt(array[i]);
-							}
-						}
-						row++;
-					}
-					s = reader.readLine();
-				}
-				reader.close();
-	    	}
-	    	catch(IOException e){
-		        e.printStackTrace();
-        }
-	    	
-        FloydWarshall fw = new FloydWarshall();
-        
-        fw.floydWarshall(adjMatrix);
     }
 }
  

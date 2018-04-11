@@ -1,3 +1,8 @@
+/*
+ * Authors: Matt Wintersteen, Sam Luther
+ * Date: Tues, Apr 10
+ * Overview: It graph
+ */
 package graphs;
 
 import java.io.BufferedInputStream;
@@ -9,7 +14,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
- 
+/**
+ *
+ * @author mwintersteen
+ */ 
 public class Kruskals
 {
     int Vert, E;
@@ -82,83 +90,7 @@ public class Kruskals
             System.out.print(vertexAlias[result[i].src]+""+vertexAlias[result[i].dest]+" ");
         }
     }
-    public static void main (String[] args) {
-        /* weighted graph
-                 10
-            A--------B
-            |  \     |
-           6|   5\   |15
-            |      \ |
-            C--------D
-                4       
-                
-           Adjacency Matrix
-           
-           A  B  C  D
-         A 0 10  6  5
-         B 10 0  0  15
-         C 6  0  0  4
-         D 5  15 4  0
-                
-                */
-    	String iFile = "textFiles/inputK.txt";
-    	String s;
-	String[] array = null;
-	Path inputPath = Paths.get(iFile);
-	int row=0;
-	
-	int[][] adjMatrix = null;
-		
-    	try {
-			InputStream iStream = new BufferedInputStream(Files.newInputStream(inputPath));
-			BufferedReader reader = new BufferedReader(new InputStreamReader(iStream));
-			s = reader.readLine();
-			while(s != null) {
-				array = s.split(",");
-				if(row == 0) {
-					adjMatrix = new int[array.length+1][array.length];
-					vertexAlias = new String[array.length];
-					for(int i=0;i<array.length;i++) {
-						adjMatrix[0][i] = i;
-						vertexAlias[i] = array[i].toString();
-					}
-					row++;
-				}
-				else {
-					for(int i=0;i<array.length;i++) {
-						adjMatrix[row][i] = Integer.parseInt(array[i]);
-					}
-					row++;
-				}
-				s = reader.readLine();
-			}
-			reader.close();
-    	}
-    	catch(IOException e) {
-	        e.printStackTrace();
-	    }
-    	
-        int V = getV(adjMatrix);  //Finds number of vertices in adjacency matrix
-        int E = getE(adjMatrix,V);  //Finds number of edges in adjacency matrix
-        Kruskals graph = new Kruskals(V, E);
-        
-        int c = 0;
-        for(int k=1;k<adjMatrix.length;k++) {
-			for(int i =(k-1);i<adjMatrix[k].length;i++) {
-				if(adjMatrix[k][i]!=0) {
-					if(adjMatrix[k][i]==adjMatrix[i+1][k-1]) {
-						graph.edge[c].src=(k-1);
-						graph.edge[c].dest=(i);
-						graph.edge[c].weight=adjMatrix[k][i];
-						c++;
-					}
-				}
-			}
-		}
-        graph.KruskalMST();
-    }
-
-	private static int getE(int[][] adjMatrix,int v) {
+	public static int getE(int[][] adjMatrix,int v) {
 		int count = 0;
 		for(int k=1;k<=v;k++) {
 			for(int i =0;i<adjMatrix[k].length;i++) {
@@ -171,7 +103,7 @@ public class Kruskals
 		return count;
 	}
 
-	private static int getV(int[][] adjMatrix) {
+	public static int getV(int[][] adjMatrix) {
 		int count = 0;
 		for(int i =0;i<adjMatrix[0].length;i++) {
 			count++;
