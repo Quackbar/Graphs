@@ -20,7 +20,7 @@ import java.nio.file.Paths;
 
 /**
  *
- * @author sluther
+ * @authors sluther mwintersteen
  */
 public class Graphs {
 
