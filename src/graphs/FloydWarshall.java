@@ -1,4 +1,4 @@
-package fw;
+package graphs;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
