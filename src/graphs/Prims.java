@@ -87,7 +87,7 @@ public class Prims {
             tempStr = "";
             for(int i=0; i<6; i++){
                 queue[i][1]=input[i+1][startNum];
-                System.out.println(queue[i][0]+"=>"+queue[i][1]);
+                //System.out.println(queue[i][0]+"=>"+queue[i][1]);
             }        
         }
 
@@ -149,13 +149,13 @@ public class Prims {
         catch(IOException e){
             e.printStackTrace();
         }
-        for(int i=0; i<7; i++){
-            for(int k=0; k<6; k++){
-                System.out.print(array[i][k]+",");
-                
-            }
-            System.out.println();
-        }
+//        for(int i=0; i<7; i++){
+//            for(int k=0; k<6; k++){
+//                System.out.print(array[i][k]+",");
+//                
+//            }
+//            System.out.println();
+//        }
         Prim(array);
 //        String[][] thing = {
 //            {"A","B","C","D","E","F"},
